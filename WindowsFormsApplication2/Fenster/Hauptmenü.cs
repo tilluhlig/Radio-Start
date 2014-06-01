@@ -16,6 +16,12 @@ namespace WindowsFormsApplication2
 {
     public class Hauptmenü : Fenster
     {
+
+        public Hauptmenü()
+        {
+            Init();
+        }
+
         Label label2 = null;
         Label label3 = null;
         Label label4 = null;
@@ -24,63 +30,69 @@ namespace WindowsFormsApplication2
 
         override public void Init()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("!PaulMaul", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Orange;
-            this.label2.Location = new System.Drawing.Point(54, 222);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 120);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "TV";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("!PaulMaul", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Orange;
-            this.label3.Location = new System.Drawing.Point(282, 222);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(204, 120);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Radio";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("!PaulMaul", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Orange;
-            this.label4.Location = new System.Drawing.Point(567, 222);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 120);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Uhr";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("!PaulMaul", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Orange;
-            this.label11.Location = new System.Drawing.Point(54, 368);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(308, 120);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Browser";
+            if (this.label2 == null)
+            {
+                this.label2 = new System.Windows.Forms.Label();
+                this.label2.AutoSize = true;
+                this.label2.BackColor = System.Drawing.Color.Transparent;
+                this.label2.Font = new System.Drawing.Font("!PaulMaul", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.label2.ForeColor = System.Drawing.Color.Orange;
+                this.label2.Location = new System.Drawing.Point(54, 222);
+                this.label2.Name = "label2";
+                this.label2.Size = new System.Drawing.Size(150, 120);
+                this.label2.TabIndex = 1;
+                this.label2.Text = "TV";
+                this.label2.Visible = false;
+                Fenster.Form.Controls.Add(this.label2);
+            }
 
-            Fenster.Form.Controls.Add(this.label2);
-            Fenster.Form.Controls.Add(this.label3);
-            Fenster.Form.Controls.Add(this.label4);
-            Fenster.Form.Controls.Add(this.label11);
+            if (this.label3 == null)
+            {
+                this.label3 = new System.Windows.Forms.Label();
+                this.label3.AutoSize = true;
+                this.label3.BackColor = System.Drawing.Color.Transparent;
+                this.label3.Font = new System.Drawing.Font("!PaulMaul", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.label3.ForeColor = System.Drawing.Color.Orange;
+                this.label3.Location = new System.Drawing.Point(282, 222);
+                this.label3.Name = "label3";
+                this.label3.Size = new System.Drawing.Size(204, 120);
+                this.label3.TabIndex = 2;
+                this.label3.Text = "Radio";
+                this.label3.Visible = false;
+                Fenster.Form.Controls.Add(this.label3);
+            }
+
+            if (this.label4 == null)
+            {
+                this.label4 = new System.Windows.Forms.Label();
+                this.label4.AutoSize = true;
+                this.label4.BackColor = System.Drawing.Color.Transparent;
+                this.label4.Font = new System.Drawing.Font("!PaulMaul", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.label4.ForeColor = System.Drawing.Color.Orange;
+                this.label4.Location = new System.Drawing.Point(567, 222);
+                this.label4.Name = "label4";
+                this.label4.Size = new System.Drawing.Size(155, 120);
+                this.label4.TabIndex = 3;
+                this.label4.Text = "Uhr";
+                this.label4.Visible = false;
+                Fenster.Form.Controls.Add(this.label4);
+            }
+
+            if (this.label11 == null)
+            {
+                this.label11 = new System.Windows.Forms.Label();
+                this.label11.AutoSize = true;
+                this.label11.BackColor = System.Drawing.Color.Transparent;
+                this.label11.Font = new System.Drawing.Font("!PaulMaul", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.label11.ForeColor = System.Drawing.Color.Orange;
+                this.label11.Location = new System.Drawing.Point(54, 368);
+                this.label11.Name = "label11";
+                this.label11.Size = new System.Drawing.Size(308, 120);
+                this.label11.TabIndex = 10;
+                this.label11.Text = "Browser";
+                this.label11.Visible = false;
+                Fenster.Form.Controls.Add(this.label11);
+            }
         }
 
         override public void Show()
@@ -121,6 +133,8 @@ namespace WindowsFormsApplication2
             label4.Font = over == 2 ? new Font(label4.Font, FontStyle.Underline) : new Font(label4.Font, FontStyle.Regular);
             label11.Font = over == 3 ? new Font(label11.Font, FontStyle.Underline) : new Font(label11.Font, FontStyle.Regular);
 
+            label3.Text = Radio.Mediaplayer.URL != "" ? "Radio aus" : "Radio";
+            ///label2.Text = Iexplorer.iexplore.Visible ? "TV aus" : "TV";
 
             int mitte = this.Width / 2;
             label3.Left = Position.X + mitte - label3.Width / 2;
@@ -172,19 +186,19 @@ namespace WindowsFormsApplication2
                             else
                                 if (KeyCodes[i] == Keys.Space)
                                 {
-                                    /* if (over == 0 && Iexplorer.iexplore.Visible)
+                                     /*if (over == 0 && Iexplorer.iexplore.Visible)
                                      {
                                          Iexplorer.ieClose();
                                          Iexplorer.ieStart();
                                          Iexplorer.iexplore.FullScreen = true;
                                          Iexplorer.iexplore.Visible = false;
                                      }
-                                     else
-                                         if (over == 1 && Mediaplayer.URL != "")
+                                     else*/
+                                         if (over == 1 && Radio.Mediaplayer.URL != "")
                                          {
-                                             Mediaplayer.Stop();
+                                             Radio.Mediaplayer.Stop();
                                          }
-                                         else*/
+                                         else
                                          {
                                              // modus wechseln
                                              Hauptfenster.Wechseln(over + 1);

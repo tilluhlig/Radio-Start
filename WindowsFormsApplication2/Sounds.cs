@@ -255,21 +255,9 @@ namespace WindowsFormsApplication2
     /// </summary>
     internal static class Sounds
     {
-        public static Soundsystem Alarm;
-        public static Soundsystem Sprache;
-        public static Soundsystem second15;
-        public static Soundsystem second30;
-        public static Soundsystem minute1;
-        public static Soundsystem minute2;
-        public static Soundsystem minute3;
-        public static Soundsystem minute5;
-        public static Soundsystem minute10;
-        public static Soundsystem minute15;
-        public static Soundsystem minute20;
-        public static Soundsystem minute30;
-        public static Soundsystem minute45;
-        public static Soundsystem minute60;
-
+        public static Soundsystem Alarm = null;
+        public static Soundsystem Sprache = null;
+        public static Soundsystem[] Ansage = new Soundsystem[12];
 
         /// <summary>
         /// Loads the specified content.
@@ -280,19 +268,9 @@ namespace WindowsFormsApplication2
             Alarm = new Soundsystem(Pfad+"alarm.wav", 1f, 1f, true);
             String Bez = Geschlecht + "_" + Land + "_";
             Sprache = new Soundsystem(Pfad + Bez+"0001.wav", 1f, 1f, false);
-            second15 = new Soundsystem(Pfad + Bez + "0002.wav", 1f, 1f, false);
-            second30 = new Soundsystem(Pfad + Bez + "0003.wav", 1f, 1f, false);
-            minute1 = new Soundsystem(Pfad + Bez + "0004.wav", 1f, 1f, false);
-            minute2 = new Soundsystem(Pfad + Bez + "0005.wav", 1f, 1f, false);
-            minute3 = new Soundsystem(Pfad + Bez + "0006.wav", 1f, 1f, false);
-            minute5 = new Soundsystem(Pfad + Bez + "0007.wav", 1f, 1f, false);
-            minute10 = new Soundsystem(Pfad + Bez + "0008.wav", 1f, 1f, false);
-            minute15 = new Soundsystem(Pfad + Bez + "0009.wav", 1f, 1f, false);
-            minute20 = new Soundsystem(Pfad + Bez + "0010.wav", 1f, 1f, false);
-            minute30 = new Soundsystem(Pfad + Bez + "0011.wav", 1f, 1f, false);
-            minute45 = new Soundsystem(Pfad + Bez + "0012.wav", 1f, 1f, false);
-            minute60 = new Soundsystem(Pfad + Bez + "0013.wav", 1f, 1f, false);
 
+            for (int i = 0; i < Ansage.Length; i++)
+                Ansage[i] = new Soundsystem(Pfad + Bez + "000"+(i+2).ToString()+".wav", 1f, 1f, false);
         }
     }
 }

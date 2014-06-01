@@ -68,6 +68,7 @@
     <Compile Include="Fenster\StopuhrAnzeige.cs" />
     <Compile Include="Fenster\StopuhrSignal.cs" />
     <Compile Include="Fenster\Uhrzeit.cs" />
+    <Compile Include="Fenster\Verlassen.cs" />
     <Compile Include="FMOD\fmod.cs" />
     <Compile Include="FMOD\fmod_dsp.cs" />
     <Compile Include="FMOD\fmod_errors.cs" />

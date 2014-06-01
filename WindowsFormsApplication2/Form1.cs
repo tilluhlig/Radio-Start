@@ -236,19 +236,6 @@ namespace WindowsFormsApplication2
             ZeigeSender = true;
         }
 
-        private void uhrEingabeStart()
-        {
-         ///   uhreingabe.Stop();
-         ///   uhreingabe.Start();
-          ///  uhreingabegestartet = true;
-        }
-
-        private void uhrEingabeStop()
-        {
-         ///   uhreingabe.Enabled = false;
-        ///    uhreingabegestartet = false;
-        }
-
         private void TvEingabeStart()
         {
             tveingabe.Stop();
@@ -273,33 +260,41 @@ namespace WindowsFormsApplication2
             Fenster.GlobalHeight = this.Height;
 
             Fenster Hauptmenü = new Hauptmenü();
-            Fenster Uhrzeit = new Uhrzeit();
-            Fenster Lautstärke = new Lautstärke();
-            Fenster Stopuhr = new Stopuhr();
+            Fenster LautstärkeFenster = new Lautstärke();
+            Fenster Stopuhrfenster = new Stopuhr();
             Fenster StopuhrSignal = new StopuhrSignal();
-            Fenster StopuhrAnzeige = new StopuhrAnzeige();
-            Fenster Radio = new Radio();
+            Fenster RadioFenster = new Radio();
+            Fenster VerlassenFenster = new Verlassen();
 
-            Hauptmenü.UnterfensterHinzufügen(Uhrzeit);
-            Hauptmenü.UnterfensterHinzufügen(Lautstärke);
-            Hauptmenü.UnterfensterHinzufügen(StopuhrAnzeige);
+            Fenster UhrzeitFenster = new Uhrzeit();
+            Hauptmenü.UnterfensterHinzufügen(UhrzeitFenster);
+            Hauptmenü.UnterfensterHinzufügen(LautstärkeFenster);
+            Fenster StopuhrAnzeigeFenster = new StopuhrAnzeige(-1, Lautstärke.label12);
+            Hauptmenü.UnterfensterHinzufügen(StopuhrAnzeigeFenster);
             Hauptmenü.UnterfensterHinzufügen(StopuhrSignal);
+            Hauptmenü.UnterfensterHinzufügen(VerlassenFenster);
 
-            Stopuhr.UnterfensterHinzufügen(Uhrzeit);
-            Stopuhr.UnterfensterHinzufügen(Lautstärke);
-            Stopuhr.UnterfensterHinzufügen(StopuhrAnzeige);
-            Stopuhr.UnterfensterHinzufügen(StopuhrSignal);
+            Fenster UhrzeitFenster2 = new Uhrzeit(Color.MidnightBlue);
+            RadioFenster.UnterfensterHinzufügen(UhrzeitFenster2);
+            RadioFenster.UnterfensterHinzufügen(LautstärkeFenster);
+            Fenster StopuhrAnzeigeFenster2 = new StopuhrAnzeige(+1, Radio.label6);
+            RadioFenster.UnterfensterHinzufügen(StopuhrAnzeigeFenster2);
+            RadioFenster.UnterfensterHinzufügen(StopuhrSignal);
+            RadioFenster.UnterfensterHinzufügen(VerlassenFenster);
 
-            Radio.UnterfensterHinzufügen(Uhrzeit);
-            Radio.UnterfensterHinzufügen(Lautstärke);
-            Radio.UnterfensterHinzufügen(StopuhrAnzeige);
-            Radio.UnterfensterHinzufügen(StopuhrSignal);
+            Fenster UhrzeitFenster3 = new Uhrzeit();
+            Stopuhrfenster.UnterfensterHinzufügen(UhrzeitFenster3);
+            Stopuhrfenster.UnterfensterHinzufügen(LautstärkeFenster);
+            Fenster StopuhrAnzeigeFenster3 = new StopuhrAnzeige(-1, Stopuhr.label10);
+            Stopuhrfenster.UnterfensterHinzufügen(StopuhrAnzeigeFenster3);
+            Stopuhrfenster.UnterfensterHinzufügen(StopuhrSignal);
+            Stopuhrfenster.UnterfensterHinzufügen(VerlassenFenster);
 
             Bildschirm = new Fenster();
             Bildschirm.BildschirmHinzufügen(Hauptmenü);
             Bildschirm.BildschirmHinzufügen(null);
-            Bildschirm.BildschirmHinzufügen(Radio);
-            Bildschirm.BildschirmHinzufügen(Stopuhr);
+            Bildschirm.BildschirmHinzufügen(RadioFenster);
+            Bildschirm.BildschirmHinzufügen(Stopuhrfenster);
             Bildschirm.Wechseln(0);
         }
 
@@ -327,11 +322,7 @@ namespace WindowsFormsApplication2
             if (mausklick != null)
             {
              int w = (int) (Width * 0.125);
-               /// Rectangle D = new Rectangle(Width - label12.Width / 2, label12.Top, label12.Width / 2, label12.Height);
-             ///   Rectangle C = new Rectangle(Width - label12.Width, label12.Top, label12.Width/2, label12.Height);
-
              ///   Rectangle E = new Rectangle(0, Height-label12.Height, (int)(Width * 0.25f), label12.Height);
-
 
                 if (modus == 0)
                 { /*  
@@ -392,53 +383,6 @@ namespace WindowsFormsApplication2
                                                     }
                                             }*/
                 }
-                else
-                    if (modus == 2)
-                    {
-                     /*   Rectangle A = new Rectangle(0, label6.Top + label6.Height, (int)(Width * 0.25f), label13.Top - (label6.Top + label6.Height));
-                        Rectangle B = new Rectangle((int)((float)(Width - Width * 0.25f)), label6.Top + label6.Height, (int)(Width * 0.25f), label13.Top - (label6.Top + label6.Height));
-                        int w2 = (int)(Width * 0.125);
-                        Rectangle D2 = new Rectangle(Width - w2, label12.Top, w2, label12.Height);
-                        Rectangle C2 = new Rectangle(Width - 2 * w2, label12.Top, w2, label12.Height);
-                        Rectangle E2 = new Rectangle(0, Height-label12.Height, (int)(Width * 0.25f), label12.Height);
-
-                        if (CheckPoint(mausklick, B))
-                        {
-                            RSenderOver++; if (RSenderOver >= RadioA.Length) RSenderOver = 0;
-                            RSenderAnzeigenStart();
-                            RadioEingabeStop();
-                            if (RSenderPos != RSenderOver)
-                            {
-                                RSenderPos = RSenderOver;
-                                RSenderWechsel(RSenderPos);
-                            }
-                        }
-                        else
-                            if (CheckPoint(mausklick, A))
-                            {
-                                RSenderOver--; if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
-                                RSenderAnzeigenStart();
-                                RadioEingabeStop();
-                                if (RSenderPos != RSenderOver)
-                                {
-                                    RSenderPos = RSenderOver;
-                                    RSenderWechsel(RSenderPos);
-                                }
-                            }
-                            else
-                                        if (CheckPoint(mausklick, E2))
-                                        {
-                                            modus = 0;
-                                            TvEingabeStop();
-                                            RadioEingabeStop();
-                                        }*/
-
-                    }
-                    else
-                        if (modus == 3)
-                        {
-                            // nichts mehr
-                        }
 
                 mausklick = null;
             }
@@ -470,15 +414,7 @@ namespace WindowsFormsApplication2
                 if (KeyHook.KeyCodes[i] == Keys.D8) Taste = 8;
                 if (KeyHook.KeyCodes[i] == Keys.D9) Taste = 9;
 
-#region MODUS0
-                if (modus == 0)
-                {
-                    // nichts mehr
-                }
-#endregion
-                else
-
-                    #region MODUS1
+                #region MODUS1
 
                     if (modus == 1)
                     {
@@ -550,28 +486,6 @@ namespace WindowsFormsApplication2
 
                     #endregion MODUS1
 
-                    else
-
-                        #region MODUS2
-
-                        if (modus == 2)
-                        {
-                            
-                        }
-
-                        #endregion MODUS2
-
-                        else
-
-                            #region MODUS3
-
-                            if (modus == 3)
-                            {
-                                // nichts mehr
-                            }
-
-                            #endregion MODUS3
-
                             else
 
                                 if (modus == 4)
@@ -620,8 +534,6 @@ namespace WindowsFormsApplication2
             KeyHook.KeyCodes.Clear();
 
             #region Zeichnen
-            ///label2.Text = Iexplorer.iexplore.Visible ? "TV aus" : "TV";
-            ///label3.Text = Mediaplayer.URL != "" ? "Radio aus" : "Radio";
 
      
             if (modus == 1 && ZeigeSender)
@@ -659,34 +571,6 @@ namespace WindowsFormsApplication2
                 /* Iexplorer.iexplore.Visible = false;
                  if (Browser.iexplore!=null)
                  Browser.iexplore.Visible = false;*/
-            }
-            else
-            {
-              // nicht mehr
-            }
-
-            // Stopuhr
-            if (modus == 3)
-            {
-                
-            }
-            else
-            {
- 
-
-              /*  label14.Hide();
-                label15.Hide();
-                label16.Hide();
-                label17.Hide();
-                label18.Hide();
-                label19.Hide();
-                label20.Hide();
-                label21.Hide();
-                label22.Hide();
-                label23.Hide();
-                label24.Hide();
-                label25.Hide();
-                label26.Hide();*/
             }
 
             if (Bildschirm!=null)

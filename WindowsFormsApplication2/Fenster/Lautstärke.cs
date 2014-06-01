@@ -1,43 +1,38 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace WindowsFormsApplication2
 {
     public class Lautstärke : Fenster
     {
+        public Lautstärke()
+        {
+            Init();
+        }
+
         public static Label label12 = null;
         override public void Init()
         {
-            label12 = new System.Windows.Forms.Label();
-            // 
-            // label12
-            // 
-            label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            label12.AutoSize = true;
-            label12.BackColor = System.Drawing.Color.Transparent;
-            label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label12.Font = new System.Drawing.Font("Andy", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label12.ForeColor = System.Drawing.Color.Orange;
-            label12.Location = new System.Drawing.Point(394, 426);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(80, 44);
-            label12.TabIndex = 11;
-            label12.Text = "////";
-            label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            label12.Visible = false;
-
-            Fenster.Form.Controls.Add(label12);
+            if (label12 == null)
+            {
+                label12 = new System.Windows.Forms.Label();
+                label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+                label12.AutoSize = true;
+                label12.BackColor = System.Drawing.Color.Transparent;
+                label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                label12.Font = new System.Drawing.Font("Andy", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                label12.ForeColor = System.Drawing.Color.Orange;
+                label12.Location = new System.Drawing.Point(394, 426);
+                label12.Name = "label12";
+                label12.Size = new System.Drawing.Size(80, 44);
+                label12.TabIndex = 11;
+                label12.Text = "////";
+                label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                label12.Visible = false;
+                Fenster.Form.Controls.Add(label12);
+            }
         }
 
         override public void Show()
