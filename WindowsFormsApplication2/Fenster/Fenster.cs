@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System;
-using System.Diagnostics;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using TL.AutoIE;
-using WMPLib;
 
 namespace WindowsFormsApplication2
 {
@@ -27,7 +16,7 @@ namespace WindowsFormsApplication2
 
         public void Wechseln(int FensterId)
         {
-            if (FensterId < 0 || FensterId >= Bildschirme.Count || Bildschirme[Modus]==null) return;
+            if (FensterId < 0 || FensterId >= Bildschirme.Count || Bildschirme[Modus] == null) return;
 
             if (FensterId != Modus)
             {
@@ -73,12 +62,10 @@ namespace WindowsFormsApplication2
 
         public virtual void Init()
         {
-
         }
 
         public virtual void Show()
         {
-
         }
 
         public virtual void Draw()
@@ -86,7 +73,7 @@ namespace WindowsFormsApplication2
             if (Modus < Bildschirme.Count && Modus >= 0)
             {
                 Bildschirme[Modus].Draw();
-                for (int i = 0; i < Bildschirme[Modus].Unterfenster.Count; i++)
+                for (int i = Bildschirme[Modus].Unterfenster.Count - 1; i >= 0; i--)
                     Bildschirme[Modus].Unterfenster[i].Draw();
             }
         }
@@ -95,9 +82,10 @@ namespace WindowsFormsApplication2
         {
             if (Modus < Bildschirme.Count && Modus >= 0)
             {
-                Keys = Bildschirme[Modus].Keyboard(Keys,this);
-                for (int i = 0; i < Bildschirme[Modus].Unterfenster.Count; i++)
-                    Keys = Bildschirme[Modus].Unterfenster[i].Keyboard(Keys,this);
+                for (int i = Bildschirme[Modus].Unterfenster.Count - 1; i >= 0; i--)
+                    Keys = Bildschirme[Modus].Unterfenster[i].Keyboard(Keys, this);
+
+                Keys = Bildschirme[Modus].Keyboard(Keys, this);
             }
             return Keys;
         }
@@ -106,9 +94,11 @@ namespace WindowsFormsApplication2
         {
             if (Modus < Bildschirme.Count && Modus >= 0)
             {
-                mausklick = Bildschirme[Modus].Mouse(mausklick, this);
-                for (int i = 0; i < Bildschirme[Modus].Unterfenster.Count && mausklick != null; i++)
+                for (int i = Bildschirme[Modus].Unterfenster.Count - 1; i >= 0 && mausklick != null; i--)
                     mausklick = Bildschirme[Modus].Unterfenster[i].Mouse(mausklick, this);
+
+                if (mausklick != null)
+                    mausklick = Bildschirme[Modus].Mouse(mausklick, this);
             }
 
             return mausklick;
@@ -116,7 +106,6 @@ namespace WindowsFormsApplication2
 
         public virtual void Hide()
         {
-
         }
 
         public static String nullen(int Text, int stellen)
@@ -148,6 +137,5 @@ namespace WindowsFormsApplication2
 
             return false;
         }
-
     }
 }

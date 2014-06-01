@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
 {
-    class Uhrzeit : Fenster
+    internal class Uhrzeit : Fenster
     {
         public Uhrzeit()
         {
@@ -22,6 +13,7 @@ namespace WindowsFormsApplication2
         }
 
         public Color BackColor = Color.Transparent;
+
         public Uhrzeit(Color _BackColor)
         {
             BackColor = _BackColor;
@@ -29,6 +21,7 @@ namespace WindowsFormsApplication2
         }
 
         public static Label label1 = null;
+
         override public void Init()
         {
             if (label1 == null)
@@ -64,11 +57,11 @@ namespace WindowsFormsApplication2
 
         override public void Draw()
         {
-            String []time = DateTime.Now.ToString().Split(' ');
-           // TimeSpan elapsedSpan = new TimeSpan(DateTime.Now.Ticks);
-           // label1.Text = elapsedSpan.TotalSeconds.ToString();
+            String[] time = DateTime.Now.ToString().Split(' ');
+            // TimeSpan elapsedSpan = new TimeSpan(DateTime.Now.Ticks);
+            // label1.Text = elapsedSpan.TotalSeconds.ToString();
 
-            label1.Text = time[1]+"\n"+time[0];
+            label1.Text = time[1] + "\n" + time[0];
             label1.Show();
             label1.BringToFront();
         }

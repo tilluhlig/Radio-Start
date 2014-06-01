@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+
 //using System.Linq;
 //using Microsoft.Xna.Framework.Content;
 
@@ -265,12 +266,12 @@ namespace WindowsFormsApplication2
         /// <param name="Content">The content.</param>
         public static void Load(String Pfad, String Land, String Geschlecht) // lädt alle Sounds
         {
-            Alarm = new Soundsystem(Pfad+"alarm.wav", 1f, 1f, true);
+            Alarm = new Soundsystem(Pfad + "alarm.wav", 1f, 1f, true);
             String Bez = Geschlecht + "_" + Land + "_";
-            Sprache = new Soundsystem(Pfad + Bez+"0001.wav", 1f, 1f, false);
+            Sprache = new Soundsystem(Pfad + Bez + "0001.wav", 1f, 1f, false);
 
             for (int i = 0; i < Ansage.Length; i++)
-                Ansage[i] = new Soundsystem(Pfad + Bez + "000"+(i+2).ToString()+".wav", 1f, 1f, false);
+                Ansage[i] = new Soundsystem(Pfad + Bez + "000" + (i + 2).ToString() + ".wav", 1f, 1f, false);
         }
     }
 }

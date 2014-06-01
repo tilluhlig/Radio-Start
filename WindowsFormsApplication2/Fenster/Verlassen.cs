@@ -1,20 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WindowsFormsApplication2
 {
-    class Verlassen : Fenster
+    internal class Verlassen : Fenster
     {
         public Verlassen()
         {
@@ -29,6 +18,7 @@ namespace WindowsFormsApplication2
 
         public int WechselZiel = 0;
         public static Label label1 = null;
+
         override public void Init()
         {
             if (label1 == null)
@@ -36,13 +26,13 @@ namespace WindowsFormsApplication2
                 label1 = new System.Windows.Forms.Label();
                 label1.AutoSize = true;
                 label1.BackColor = System.Drawing.Color.Transparent;
-                label1.Font = new System.Drawing.Font("Algerian", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                label1.ForeColor = System.Drawing.Color.Yellow;
+                label1.Font = new System.Drawing.Font("Algerian", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                label1.ForeColor = System.Drawing.Color.Red;// //
                 label1.Location = new System.Drawing.Point(0, 2);
                 label1.Name = "label1";
                 label1.Size = new System.Drawing.Size(170, 82);
                 label1.TabIndex = 0;
-                label1.Text = "00:00\r\n00.00.00";
+                label1.Text = "<<<";
                 label1.Visible = false;
                 Fenster.Form.Controls.Add(label1);
             }
@@ -50,21 +40,31 @@ namespace WindowsFormsApplication2
 
         override public void Show()
         {
-            // NICHTS
+            label1.Show();
+            label1.Refresh();
         }
 
         override public void Hide()
         {
-            // NICHTS
+            label1.Hide();
+            label1.Refresh();
         }
 
         override public void Draw()
         {
-            // NICHTS
+            label1.Left = 0;
+            label1.Top = Height - label1.Height;
         }
 
         public override POINT Mouse(POINT mausklick, Fenster Hauptfenster)
         {
+            if (mausklick == null) return null;
+
+            if (CheckPoint(mausklick, label1))
+            {
+                Hauptfenster.Wechseln(WechselZiel);
+                return null;
+            }
             return mausklick;
         }
 

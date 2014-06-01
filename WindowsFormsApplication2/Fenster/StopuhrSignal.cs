@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
 {
-    class StopuhrSignal : Fenster
+    internal class StopuhrSignal : Fenster
     {
         public StopuhrSignal()
         {
@@ -23,7 +13,7 @@ namespace WindowsFormsApplication2
 
         override public void Init()
         {
-            if (Sounds.Alarm==null)
+            if (Sounds.Alarm == null)
                 Sounds.Load("C:\\Sounds\\", "DE", "F");
         }
 
@@ -37,7 +27,8 @@ namespace WindowsFormsApplication2
             // NICHTS
         }
 
-        public static bool AnsageIsPlaying(){
+        public static bool AnsageIsPlaying()
+        {
             for (int i = 0; i < Sounds.Ansage.Length; i++)
             {
                 if (Sounds.Ansage[i].IsPlaying(0))
@@ -50,7 +41,7 @@ namespace WindowsFormsApplication2
         {
             if (Stopuhr.uhraktiv)
             {
-                 double Zeit = Stopuhr.UhrEnde - (new TimeSpan(DateTime.Now.Ticks)).TotalSeconds;
+                double Zeit = Stopuhr.UhrEnde - (new TimeSpan(DateTime.Now.Ticks)).TotalSeconds;
                 for (int i = 0; i < Stopuhr.AnsageSekunde.Length; i++)
                 {
                     if (Zeit <= Stopuhr.AnsageSekunde[i] && Zeit >= Stopuhr.AnsageSekunde[i] - 1 && !Sounds.Ansage[i].IsPlaying(0))
@@ -95,6 +86,8 @@ namespace WindowsFormsApplication2
 
         public override POINT Mouse(POINT mausklick, Fenster Hauptfenster)
         {
+            if (mausklick == null) return null;
+
             if (Stopuhr.alarmaktiv)
             {
                 Stopuhr.alarmaktiv = false;

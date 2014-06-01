@@ -1,20 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System;
-using System.Diagnostics;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using TL.AutoIE;
 using WMPLib;
 
 namespace WindowsFormsApplication2
@@ -52,21 +39,21 @@ namespace WindowsFormsApplication2
 
         private void RadioEingabeStart()
         {
-           /// radioeingabe.Stop();
-           /// radioeingabe.Start();
+            /// radioeingabe.Stop();
+            /// radioeingabe.Start();
             radioeingabegestartet = true;
         }
 
         private void RadioEingabeStop()
         {
-           /// radioeingabe.Stop();
+            /// radioeingabe.Stop();
             radioeingabegestartet = false;
         }
 
         private void RSenderAnzeigenStart()
         {
-           /// Rsenderzeigen.Stop();
-           /// Rsenderzeigen.Start();
+            /// Rsenderzeigen.Stop();
+            /// Rsenderzeigen.Start();
             RZeigeSender = true;
         }
 
@@ -75,7 +62,6 @@ namespace WindowsFormsApplication2
 
         override public void Init()
         {
-
             if (label13 == null)
             {
                 label13 = new System.Windows.Forms.Label();
@@ -127,6 +113,9 @@ namespace WindowsFormsApplication2
 
             label6.Show();
             label6.Refresh();
+
+            Starte_Radio(RSenderPos);
+            RSenderAnzeigenStart();
         }
 
         override public void Hide()
@@ -155,48 +144,47 @@ namespace WindowsFormsApplication2
                 restartwait--;
 
             label6.Text = ("").PadRight(30, ' ') + (RSenderOver).ToString() + "   " + RadioS[RSenderOver] + ("").PadRight(30, ' ');
-  label6.Top = 0;//this.Height / 4 - label6.Height
-  label6.Left = this.Width / 2 - label6.Width / 2;
-  label6.BringToFront();
-  label6.Show();
+            label6.Top = 0;//this.Height / 4 - label6.Height
+            label6.Left = this.Width / 2 - label6.Width / 2;
+            label6.BringToFront();
+            label6.Show();
 
             label13.Text = ("").PadLeft(120, ' ') + Mediaplayer.Mediaplayer.status + ("").PadLeft(120, ' ');
-  label13.Top = this.Height - label13.Height - Lautstärke.label12.Height;
-  label13.Left = this.Width / 2 - label13.Width / 2;
-  label13.Show();
-  label13.Refresh();
-
+            label13.Top = this.Height - label13.Height - Lautstärke.label12.Height;
+            label13.Left = this.Width / 2 - label13.Width / 2;
+            label13.Show();
+            label13.Refresh();
         }
 
         public override POINT Mouse(POINT mausklick, Fenster Hauptfenster)
         {
-               Rectangle A = new Rectangle(0, label6.Top + label6.Height, (int)(Width * 0.25f), label13.Top - (label6.Top + label6.Height));
-                       Rectangle B = new Rectangle((int)((float)(Width - Width * 0.25f)), label6.Top + label6.Height, (int)(Width * 0.25f), label13.Top - (label6.Top + label6.Height));
-                       int w2 = (int)(Width * 0.125);
+            Rectangle A = new Rectangle(0, label6.Top + label6.Height, (int)(Width * 0.25f), label13.Top - (label6.Top + label6.Height));
+            Rectangle B = new Rectangle((int)((float)(Width - Width * 0.25f)), label6.Top + label6.Height, (int)(Width * 0.25f), label13.Top - (label6.Top + label6.Height));
+            int w2 = (int)(Width * 0.125);
 
             if (CheckPoint(mausklick, B))
-                       {
-                           RSenderOver++; if (RSenderOver >= RadioA.Length) RSenderOver = 0;
-                           RSenderAnzeigenStart();
-                           RadioEingabeStop();
-                           if (RSenderPos != RSenderOver)
-                           {
-                               RSenderPos = RSenderOver;
-                               RSenderWechsel(RSenderPos);
-                           }
-                       }
-                       else
-                           if (CheckPoint(mausklick, A))
-                           {
-                               RSenderOver--; if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
-                               RSenderAnzeigenStart();
-                               RadioEingabeStop();
-                               if (RSenderPos != RSenderOver)
-                               {
-                                   RSenderPos = RSenderOver;
-                                   RSenderWechsel(RSenderPos);
-                               }
-                           }
+            {
+                RSenderOver++; if (RSenderOver >= RadioA.Length) RSenderOver = 0;
+                RSenderAnzeigenStart();
+                RadioEingabeStop();
+                if (RSenderPos != RSenderOver)
+                {
+                    RSenderPos = RSenderOver;
+                    RSenderWechsel(RSenderPos);
+                }
+            }
+            else
+                if (CheckPoint(mausklick, A))
+                {
+                    RSenderOver--; if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
+                    RSenderAnzeigenStart();
+                    RadioEingabeStop();
+                    if (RSenderPos != RSenderOver)
+                    {
+                        RSenderPos = RSenderOver;
+                        RSenderWechsel(RSenderPos);
+                    }
+                }
 
             return mausklick;
         }
@@ -204,70 +192,70 @@ namespace WindowsFormsApplication2
         override public List<Keys> Keyboard(List<Keys> Keys, Fenster Hauptfenster)
         {
             return Keys;
-           /* if (Taste > -1)
-            {
-                if (!radioeingabegestartet)
-                {
-                    RSenderOver = 0;
-                }
+            /* if (Taste > -1)
+             {
+                 if (!radioeingabegestartet)
+                 {
+                     RSenderOver = 0;
+                 }
 
-                RSenderOver *= 10;
-                RSenderOver += Taste;
+                 RSenderOver *= 10;
+                 RSenderOver += Taste;
 
-                if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
-                if (RSenderOver >= RadioA.Length) RSenderOver = 0;
-                RadioEingabeStart();
-                RSenderAnzeigenStart();
-                //  timer3_Tick(null, null);
-            }
-            else
-                if (KeyHook.KeyCodes[i] == Keys.P)
-                {
-                    RSenderOver++; if (RSenderOver >= RadioA.Length) RSenderOver = 0;
-                    RSenderAnzeigenStart();
-                    RSenderPos = RSenderOver;
-                    RSenderWechsel(RSenderPos);
-                    RadioEingabeStop();
-                    //  timer3_Tick(null, null);
-                }
-                else
-                    if (KeyHook.KeyCodes[i] == Keys.O)
-                    {
-                        RSenderOver--; if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
-                        RSenderAnzeigenStart();
-                        RSenderPos = RSenderOver;
-                        RSenderWechsel(RSenderPos);
-                        RadioEingabeStop();
-                        //   timer3_Tick(null, null);
-                    }
-                    else
-                        if (KeyHook.KeyCodes[i] == Keys.Up)
-                        {
-                            RSenderOver++; if (RSenderOver >= RadioA.Length) RSenderOver = 0;
-                            RSenderAnzeigenStart();
-                            RadioEingabeStop();
-                            //   timer3_Tick(null, null);
-                        }
-                        else
-                            if (KeyHook.KeyCodes[i] == Keys.Down)
-                            {
-                                RSenderOver--; if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
-                                RSenderAnzeigenStart();
-                                RadioEingabeStop();
-                                //    timer3_Tick(null, null);
-                            }
-                            else
-                                if (KeyHook.KeyCodes[i] == Keys.Space)
-                                {
-                                    if (RSenderPos != RSenderOver)
-                                    {
-                                        RSenderPos = RSenderOver;
-                                        RSenderWechsel(RSenderPos);
-                                    }
-                                    RadioEingabeStop();
-                                    RSenderAnzeigenStart();
-                                    //   timer3_Tick(null, null);
-                                }*/
+                 if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
+                 if (RSenderOver >= RadioA.Length) RSenderOver = 0;
+                 RadioEingabeStart();
+                 RSenderAnzeigenStart();
+                 //  timer3_Tick(null, null);
+             }
+             else
+                 if (KeyHook.KeyCodes[i] == Keys.P)
+                 {
+                     RSenderOver++; if (RSenderOver >= RadioA.Length) RSenderOver = 0;
+                     RSenderAnzeigenStart();
+                     RSenderPos = RSenderOver;
+                     RSenderWechsel(RSenderPos);
+                     RadioEingabeStop();
+                     //  timer3_Tick(null, null);
+                 }
+                 else
+                     if (KeyHook.KeyCodes[i] == Keys.O)
+                     {
+                         RSenderOver--; if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
+                         RSenderAnzeigenStart();
+                         RSenderPos = RSenderOver;
+                         RSenderWechsel(RSenderPos);
+                         RadioEingabeStop();
+                         //   timer3_Tick(null, null);
+                     }
+                     else
+                         if (KeyHook.KeyCodes[i] == Keys.Up)
+                         {
+                             RSenderOver++; if (RSenderOver >= RadioA.Length) RSenderOver = 0;
+                             RSenderAnzeigenStart();
+                             RadioEingabeStop();
+                             //   timer3_Tick(null, null);
+                         }
+                         else
+                             if (KeyHook.KeyCodes[i] == Keys.Down)
+                             {
+                                 RSenderOver--; if (RSenderOver < 0) RSenderOver = RadioA.Length - 1;
+                                 RSenderAnzeigenStart();
+                                 RadioEingabeStop();
+                                 //    timer3_Tick(null, null);
+                             }
+                             else
+                                 if (KeyHook.KeyCodes[i] == Keys.Space)
+                                 {
+                                     if (RSenderPos != RSenderOver)
+                                     {
+                                         RSenderPos = RSenderOver;
+                                         RSenderWechsel(RSenderPos);
+                                     }
+                                     RadioEingabeStop();
+                                     RSenderAnzeigenStart();
+                                     //   timer3_Tick(null, null);
+                                 }*/
         }
     }
 }

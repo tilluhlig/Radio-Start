@@ -8,13 +8,15 @@
 */
 
 #region Usings
+
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.IO;
+using System.Net;
 using mshtml;
 using SHDocVw;
-#endregion
+
+#endregion Usings
 
 namespace TL.AutoIE
 {
@@ -24,6 +26,7 @@ namespace TL.AutoIE
     public class ControlIE
     {
         #region Globale Variablen
+
         /// <summary>
         /// Adresse der URL
         /// </summary>
@@ -68,9 +71,11 @@ namespace TL.AutoIE
         /// Name des zu drückenden Buttons
         /// </summary>
         private string btnName;
-        #endregion
+
+        #endregion Globale Variablen
 
         #region Eigenschaften
+
         /// <summary>
         /// Erhält oder definiert ob ein Button mit zu übermittelnden Werten gedrückt wird
         /// </summary>
@@ -104,9 +109,11 @@ namespace TL.AutoIE
                 btnName = value;
             }
         }
-        #endregion
+
+        #endregion Eigenschaften
 
         #region Funktionen
+
         /// <summary>
         /// Internet Explorer starten
         /// </summary>
@@ -269,6 +276,7 @@ namespace TL.AutoIE
         {
             return errorMsg;
         }
-        #endregion
+
+        #endregion Funktionen
     }
 }

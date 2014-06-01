@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-//using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System;
-using System.Diagnostics;
-using System.Drawing;
 using System.Runtime.InteropServices;
+
+//using System.Linq;
 using System.Windows.Forms;
 
 public class KeyHook
@@ -17,15 +10,15 @@ public class KeyHook
     private delegate int HookProc(int nCode, IntPtr wParam, IntPtr lParam);
 
     //Declare hook handle as int.
-    static int hHook = 0;
+    private static int hHook = 0;
 
     public static List<Keys> KeyCodes = new List<Keys>();
 
     //Declare keyboard hook constant.
     //For other hook types, you can obtain these values from Winuser.h in Microsoft SDK.
-    const int WH_KEYBOARD_LL = 13;
+    private const int WH_KEYBOARD_LL = 13;
 
-    HookProc KeyboardHookProcedure;
+    private HookProc KeyboardHookProcedure;
 
     [StructLayout(LayoutKind.Sequential)]
     private class keyboardHookStruct
@@ -58,7 +51,7 @@ public class KeyHook
     IntPtr wParam, IntPtr lParam);
 
     [DllImport("kernel32.dll")]
-    static extern IntPtr LoadLibrary(string lpFileName);
+    private static extern IntPtr LoadLibrary(string lpFileName);
 
     public KeyHook()
     {
@@ -94,7 +87,6 @@ public class KeyHook
         }
         else
         {
-
             if (((int)wParam == 256) || ((int)wParam == 260))
             {
                 keyboardHookStruct MyKeyboardHookStruct = (keyboardHookStruct)Marshal.PtrToStructure(lParam, typeof(keyboardHookStruct));
@@ -104,5 +96,4 @@ public class KeyHook
             return CallNextHookEx(hHook, nCode, wParam, lParam);
         }
     }
-
 }

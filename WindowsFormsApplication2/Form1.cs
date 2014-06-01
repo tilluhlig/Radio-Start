@@ -39,7 +39,6 @@ namespace WindowsFormsApplication2
 
         private const int SW_RESTORE = 9;
 
-        private int over = 0;
         private int modus = 0;
         private bool clicked = false;
 
@@ -114,8 +113,8 @@ namespace WindowsFormsApplication2
             //   TerminateProcess("firefox");
             //   TerminateProcess("taskmgr");
 
-           // IntPtr cursor = LoadCursorFromFile(@"./blank.cur");
-         //   SetSystemCursor(cursor, 32512);
+            // IntPtr cursor = LoadCursorFromFile(@"./blank.cur");
+            //   SetSystemCursor(cursor, 32512);
 
             Color trans = Color.Black;
             this.ForeColor = trans;
@@ -127,26 +126,26 @@ namespace WindowsFormsApplication2
             timer3.Enabled = true;
 
             timer3_Tick(null, null);
-            
 
-           /* Browser.ieNavigate(true, "www.google.de");
-            Browser.iexplore.FullScreen = true;
-            Browser.iexplore.Silent = true;
-            Browser.iexplore.AddressBar = false;
-            Browser.iexplore.MenuBar = false;
-            Browser.iexplore.Resizable = false;
-            Browser.iexplore.StatusBar = false;
-            Browser.iexplore.Visible = false;
 
-            Iexplorer.ieNavigate(true, "about:blank");
-            Iexplorer.iexplore.FullScreen = true;
-            Iexplorer.iexplore.Silent = true;
-            Iexplorer.iexplore.AddressBar = false;
-            Iexplorer.iexplore.MenuBar = false;
-            Iexplorer.iexplore.Resizable = false;
-            Iexplorer.iexplore.StatusBar = false;
-            Iexplorer.iexplore.Visible = false;
-            Mediaplayer.Mediaplayer.settings.volume = MediaVolume;*/
+            /* Browser.ieNavigate(true, "www.google.de");
+             Browser.iexplore.FullScreen = true;
+             Browser.iexplore.Silent = true;
+             Browser.iexplore.AddressBar = false;
+             Browser.iexplore.MenuBar = false;
+             Browser.iexplore.Resizable = false;
+             Browser.iexplore.StatusBar = false;
+             Browser.iexplore.Visible = false;
+
+             Iexplorer.ieNavigate(true, "about:blank");
+             Iexplorer.iexplore.FullScreen = true;
+             Iexplorer.iexplore.Silent = true;
+             Iexplorer.iexplore.AddressBar = false;
+             Iexplorer.iexplore.MenuBar = false;
+             Iexplorer.iexplore.Resizable = false;
+             Iexplorer.iexplore.StatusBar = false;
+             Iexplorer.iexplore.Visible = false;
+             Mediaplayer.Mediaplayer.settings.volume = MediaVolume;*/
         }
 
 
@@ -249,7 +248,7 @@ namespace WindowsFormsApplication2
             tveingabegestartet = false;
         }
 
-       
+
         Fenster Bildschirm = null;
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -300,8 +299,8 @@ namespace WindowsFormsApplication2
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-          /*  if (Iexplorer.launched)
-                Iexplorer.ieClose();*/
+            /*  if (Iexplorer.launched)
+                  Iexplorer.ieClose();*/
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -319,78 +318,10 @@ namespace WindowsFormsApplication2
             if (Bildschirm != null && mausklick != null)
                 Bildschirm.Mouse(mausklick, null);
 
-            if (mausklick != null)
-            {
-             int w = (int) (Width * 0.125);
-             ///   Rectangle E = new Rectangle(0, Height-label12.Height, (int)(Width * 0.25f), label12.Height);
+            /**/
 
-                if (modus == 0)
-                { /*  
-                    if (CheckPoint(mausklick, label2))
-                    {
-                        over = 0;
-                        modus = 1;
-                    }
-                    else
-                        if (CheckPoint(mausklick, label3))
-                        {
-                            if (Mediaplayer.URL != "")
-                            {
-                                Mediaplayer.Stop();
-                            }
-                            else
-                            {
-                                over = 1;
-                                modus = 2;
-                                // Musik aufrufen
-                                if (Iexplorer.iexplore.Visible)
-                                {
-                                    Iexplorer.ieClose();
-                                    Iexplorer.ieStart();
-                                    Iexplorer.iexplore.Visible = false;
-                                }
-
-                                Starte_Radio(RSenderPos);
-                                RSenderAnzeigenStart();
-                            }
-                        }
-                        else
-                            if (CheckPoint(mausklick, label4))
-                            {
-                                over = 2;
-                                // Uhr aufrufen
-                               /// uhrover = 0;
-                                modus = 3;
-                            }
-                            else
-                                if (CheckPoint(mausklick, label11))
-                                {
-                                    over = 3;
-                                    modus = 4;
-                                }
-                                else
-                                            if (CheckPoint(mausklick, E))
-                                            {
-                                                if (Iexplorer.iexplore.Visible)
-                                                {
-                                                    modus = 1;
-                                                }
-                                                else
-                                                    if (Mediaplayer.URL != "")
-                                                    {
-                                                        modus = 2;
-                                                        this.Refresh();
-                                                    }
-                                            }*/
-                }
-
-                mausklick = null;
-            }
-
-          /**/
-
-            if (Bildschirm!=null)
-            KeyHook.KeyCodes = Bildschirm.Keyboard(KeyHook.KeyCodes, null);
+            if (Bildschirm != null)
+                KeyHook.KeyCodes = Bildschirm.Keyboard(KeyHook.KeyCodes, null);
 
             for (int i = 0; i < KeyHook.KeyCodes.Count; i++)
             {
@@ -416,126 +347,126 @@ namespace WindowsFormsApplication2
 
                 #region MODUS1
 
-                    if (modus == 1)
+                if (modus == 1)
+                {
+                    if (Taste > -1)
                     {
-                        if (Taste > -1)
+                        if (!tveingabegestartet)
                         {
-                            if (!tveingabegestartet)
-                            {
-                                SenderOver = 0;
-                            }
+                            SenderOver = 0;
+                        }
 
-                            SenderOver *= 10;
-                            SenderOver += Taste;
+                        SenderOver *= 10;
+                        SenderOver += Taste;
 
-                            if (SenderOver < 0) SenderOver = Sender.Length - 1;
-                            if (SenderOver >= Sender.Length) SenderOver = 0;
-                            TvEingabeStart();
+                        if (SenderOver < 0) SenderOver = Sender.Length - 1;
+                        if (SenderOver >= Sender.Length) SenderOver = 0;
+                        TvEingabeStart();
+                        SenderAnzeigenStart();
+                        //  timer3_Tick(null, null);
+                    }
+                    else
+                        if (KeyHook.KeyCodes[i] == Keys.P)
+                        {
+                            SenderOver++; if (SenderOver >= Sender.Length) SenderOver = 0;
                             SenderAnzeigenStart();
-                            //  timer3_Tick(null, null);
+                            SenderPos = SenderOver;
+                            SenderWechsel(SenderPos);
+                            TvEingabeStop();
+                            //   timer3_Tick(null, null);
                         }
                         else
-                            if (KeyHook.KeyCodes[i] == Keys.P)
+                            if (KeyHook.KeyCodes[i] == Keys.O)
                             {
-                                SenderOver++; if (SenderOver >= Sender.Length) SenderOver = 0;
+                                SenderOver--; if (SenderOver < 0) SenderOver = Sender.Length - 1;
                                 SenderAnzeigenStart();
                                 SenderPos = SenderOver;
                                 SenderWechsel(SenderPos);
                                 TvEingabeStop();
-                                //   timer3_Tick(null, null);
+                                //  timer3_Tick(null, null);
                             }
                             else
-                                if (KeyHook.KeyCodes[i] == Keys.O)
+                                if (KeyHook.KeyCodes[i] == Keys.Up)
                                 {
-                                    SenderOver--; if (SenderOver < 0) SenderOver = Sender.Length - 1;
+                                    SenderOver++; if (SenderOver >= Sender.Length) SenderOver = 0;
                                     SenderAnzeigenStart();
-                                    SenderPos = SenderOver;
-                                    SenderWechsel(SenderPos);
                                     TvEingabeStop();
-                                    //  timer3_Tick(null, null);
+                                    // timer3_Tick(null, null);
                                 }
                                 else
-                                    if (KeyHook.KeyCodes[i] == Keys.Up)
+                                    if (KeyHook.KeyCodes[i] == Keys.Down)
                                     {
-                                        SenderOver++; if (SenderOver >= Sender.Length) SenderOver = 0;
+                                        SenderOver--; if (SenderOver < 0) SenderOver = Sender.Length - 1;
                                         SenderAnzeigenStart();
                                         TvEingabeStop();
-                                        // timer3_Tick(null, null);
+                                        //  timer3_Tick(null, null);
                                     }
                                     else
-                                        if (KeyHook.KeyCodes[i] == Keys.Down)
+                                        if (KeyHook.KeyCodes[i] == Keys.Space)
                                         {
-                                            SenderOver--; if (SenderOver < 0) SenderOver = Sender.Length - 1;
-                                            SenderAnzeigenStart();
-                                            TvEingabeStop();
-                                            //  timer3_Tick(null, null);
-                                        }
-                                        else
-                                            if (KeyHook.KeyCodes[i] == Keys.Space)
+                                            if (SenderPos != SenderOver)
                                             {
-                                                if (SenderPos != SenderOver)
-                                                {
-                                                    SenderPos = SenderOver;
-                                                    SenderWechsel(SenderPos);
-                                                }
-                                                TvEingabeStop();
-                                                SenderAnzeigenStart();
-                                                // timer3_Tick(null, null);
+                                                SenderPos = SenderOver;
+                                                SenderWechsel(SenderPos);
                                             }
+                                            TvEingabeStop();
+                                            SenderAnzeigenStart();
+                                            // timer3_Tick(null, null);
+                                        }
+                }
+
+                #endregion MODUS1
+
+                else
+
+                    if (modus == 4)
+                    {
+                        if (KeyHook.KeyCodes[i] == Keys.F6)
+                        {
+                            Browser.iexplore.Navigate("www.google.de");
+                        }
                     }
 
-                    #endregion MODUS1
-
-                            else
-
-                                if (modus == 4)
-                                {
-                                    if (KeyHook.KeyCodes[i] == Keys.F6)
-                                    {
-                                        Browser.iexplore.Navigate("www.google.de");
-                                    }
-                                }
-
-                        if (KeyHook.KeyCodes[i] == Keys.Escape)
+                if (KeyHook.KeyCodes[i] == Keys.Escape)
+                {
+                    if (modus == 4)
+                    {
+                        modus = 0;
+                        Browser.iexplore.Visible = false;
+                        this.Show();
+                        Visible = true;
+                        ///if (Mediaplayer.URL != "") Mediaplayer.Show();
+                        this.Focus();
+                        focuse();
+                    }
+                    else
+                        if (modus == 0)
                         {
-                            if (modus == 4)
+                            /*if (Iexplorer.iexplore.Visible)
                             {
-                                modus = 0;
-                                Browser.iexplore.Visible = false;
-                                this.Show();
-                                Visible = true;
-                                ///if (Mediaplayer.URL != "") Mediaplayer.Show();
-                                this.Focus();
-                                focuse();
+                                modus = 1;
                             }
                             else
-                                if (modus == 0)
+                                if (Mediaplayer.URL != "")
                                 {
-                                    /*if (Iexplorer.iexplore.Visible)
-                                    {
-                                        modus = 1;
-                                    }
-                                    else
-                                        if (Mediaplayer.URL != "")
-                                        {
-                                            modus = 2;
-                                            this.Refresh();
-                                        }*/
-                                }
-                                else
-                                {
-                                    modus = 0;
-                                    TvEingabeStop();
-                                   /// RadioEingabeStop();
-                                }
+                                    modus = 2;
+                                    this.Refresh();
+                                }*/
                         }
+                        else
+                        {
+                            modus = 0;
+                            TvEingabeStop();
+                            /// RadioEingabeStop();
+                        }
+                }
             }
 
             KeyHook.KeyCodes.Clear();
 
             #region Zeichnen
 
-     
+
             if (modus == 1 && ZeigeSender)
             {
                 label6.Text = ("").PadRight(30, ' ') + (SenderOver).ToString() + "   " + SenderAnzeige[SenderOver] + ("").PadRight(30, ' ');
@@ -547,11 +478,11 @@ namespace WindowsFormsApplication2
 
             if (modus == 2)
             {
-// nichts mehr
+                // nichts mehr
             }
             else
             {
-               // label13.Hide();
+                // label13.Hide();
                 //label1.BackColor = Color.Transparent;
                 // label5.BackColor = Color.Transparent;
                 if (!(modus == 1 && ZeigeSender))
@@ -559,21 +490,21 @@ namespace WindowsFormsApplication2
             }
 
             {
-               // nichts mehr
-               
+                // nichts mehr
+
             }
 
             // Hauptmenü
             if (modus == 0)
             {
-               // nichts mehr
+                // nichts mehr
 
                 /* Iexplorer.iexplore.Visible = false;
                  if (Browser.iexplore!=null)
                  Browser.iexplore.Visible = false;*/
             }
 
-            if (Bildschirm!=null)
+            if (Bildschirm != null)
                 Bildschirm.Draw();
 
             focuse();
@@ -582,7 +513,7 @@ namespace WindowsFormsApplication2
 
         private void sekunde_Tick(object sender, EventArgs e)
         {
-            
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -631,21 +562,21 @@ namespace WindowsFormsApplication2
 
         private void radioeingabe_Tick(object sender, EventArgs e)
         {
-          /*  radioeingabe.Enabled = false;
-            radioeingabegestartet = false;
-            if (RSenderPos != RSenderOver)
-            {
-                RSenderPos = RSenderOver;
-                RSenderWechsel(RSenderPos);
-            }
-            RSenderAnzeigenStart();*/
-           
+            /*  radioeingabe.Enabled = false;
+              radioeingabegestartet = false;
+              if (RSenderPos != RSenderOver)
+              {
+                  RSenderPos = RSenderOver;
+                  RSenderWechsel(RSenderPos);
+              }
+              RSenderAnzeigenStart();*/
+
         }
 
         private void Rsenderanzeigen_Tick(object sender, EventArgs e)
         {
-           /* RZeigeSender = false;
-            RSenderOver = RSenderPos;*/
+            /* RZeigeSender = false;
+             RSenderOver = RSenderPos;*/
         }
     }
 

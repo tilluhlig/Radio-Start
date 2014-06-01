@@ -1,31 +1,20 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WindowsFormsApplication2
 {
     public class Hauptmenü : Fenster
     {
-
         public Hauptmenü()
         {
             Init();
         }
 
-        Label label2 = null;
-        Label label3 = null;
-        Label label4 = null;
-        Label label11 = null;
+        private Label label2 = null;
+        private Label label3 = null;
+        private Label label4 = null;
+        private Label label11 = null;
         private int over = 0;
 
         override public void Init()
@@ -152,7 +141,48 @@ namespace WindowsFormsApplication2
 
         public override POINT Mouse(POINT mausklick, Fenster Hauptfenster)
         {
-            return mausklick;
+            if (CheckPoint(mausklick, label2))
+            {
+                over = 0;
+                Hauptfenster.Wechseln(1);
+            }
+            else
+                if (CheckPoint(mausklick, label3))
+                {
+                    if (Radio.Mediaplayer.URL != "")
+                    {
+                        Radio.Mediaplayer.Stop();
+                    }
+                    else
+                    {
+                        over = 1;
+                        Hauptfenster.Wechseln(2);
+                        // Musik aufrufen
+                        /* if (Iexplorer.iexplore.Visible)
+                         {
+                             Iexplorer.ieClose();
+                             Iexplorer.ieStart();
+                             Iexplorer.iexplore.Visible = false;
+                         }*/
+                    }
+                }
+                else
+                    if (CheckPoint(mausklick, label4))
+                    {
+                        over = 2;
+                        // Uhr aufrufen
+                        /// uhrover = 0;
+                        Hauptfenster.Wechseln(3);
+                    }
+                    else
+                        if (CheckPoint(mausklick, label11))
+                        {
+                            over = 3;
+                            Hauptfenster.Wechseln(4);
+                        }
+                        else
+                            return mausklick;
+            return null;
         }
 
         public override List<Keys> Keyboard(List<Keys> KeyCodes, Fenster Hauptfenster)
@@ -186,62 +216,61 @@ namespace WindowsFormsApplication2
                             else
                                 if (KeyCodes[i] == Keys.Space)
                                 {
-                                     /*if (over == 0 && Iexplorer.iexplore.Visible)
-                                     {
-                                         Iexplorer.ieClose();
-                                         Iexplorer.ieStart();
-                                         Iexplorer.iexplore.FullScreen = true;
-                                         Iexplorer.iexplore.Visible = false;
-                                     }
-                                     else*/
-                                         if (over == 1 && Radio.Mediaplayer.URL != "")
+                                    /*if (over == 0 && Iexplorer.iexplore.Visible)
+                                    {
+                                        Iexplorer.ieClose();
+                                        Iexplorer.ieStart();
+                                        Iexplorer.iexplore.FullScreen = true;
+                                        Iexplorer.iexplore.Visible = false;
+                                    }
+                                    else*/
+                                    if (over == 1 && Radio.Mediaplayer.URL != "")
+                                    {
+                                        Radio.Mediaplayer.Stop();
+                                    }
+                                    else
+                                    {
+                                        // modus wechseln
+                                        Hauptfenster.Wechseln(over + 1);
+                                        /* modus = over + 1;
+
+                                         if (modus == 1)
                                          {
-                                             Radio.Mediaplayer.Stop();
+                                             // TV aufrufen
+                                             Mediaplayer.Stop();
+
+                                             if (!Iexplorer.iexplore.Visible)
+                                             {
+                                                 Starte_TV();
+                                             }
+                                             SenderAnzeigenStart();
                                          }
                                          else
-                                         {
-                                             // modus wechseln
-                                             Hauptfenster.Wechseln(over + 1);
-                                            /* modus = over + 1;
-
-                                             if (modus == 1)
+                                             if (modus == 2)
                                              {
-                                                 // TV aufrufen
-                                                 Mediaplayer.Stop();
-
-                                                 if (!Iexplorer.iexplore.Visible)
+                                                 // Musik aufrufen
+                                                 if (Iexplorer.iexplore.Visible)
                                                  {
-                                                     Starte_TV();
+                                                     Iexplorer.ieClose();
+                                                     Iexplorer.ieStart();
+                                                     Iexplorer.iexplore.Visible = false;
                                                  }
-                                                 SenderAnzeigenStart();
+
+                                                 Starte_Radio(RSenderPos);
+                                                 RSenderAnzeigenStart();
                                              }
                                              else
-                                                 if (modus == 2)
+                                                 if (modus == 3)
                                                  {
-                                                     // Musik aufrufen
-                                                     if (Iexplorer.iexplore.Visible)
-                                                     {
-                                                         Iexplorer.ieClose();
-                                                         Iexplorer.ieStart();
-                                                         Iexplorer.iexplore.Visible = false;
-                                                     }
-
-                                                     Starte_Radio(RSenderPos);
-                                                     RSenderAnzeigenStart();
+                                                     // Uhr aufrufen
+                                                     ///   uhrover = 0;
                                                  }
                                                  else
-                                                     if (modus == 3)
+                                                     if (modus == 4)
                                                      {
-                                                         // Uhr aufrufen
-                                                         ///   uhrover = 0;
-                                                     }
-                                                     else
-                                                         if (modus == 4)
-                                                         {
-                                                             Starte_Browser();
-                                                         }*/
-
-                                         }
+                                                         Starte_Browser();
+                                                     }*/
+                                    }
                                 }
                                 else
                                     Result.Add(KeyCodes[i]);
@@ -249,6 +278,5 @@ namespace WindowsFormsApplication2
 
             return Result;
         }
-
     }
 }

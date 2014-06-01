@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
 {
@@ -28,8 +19,10 @@ namespace WindowsFormsApplication2
         private int ISekunden = 0;
         private int IMinuten = 0;
         private int IStunden = 0;
+
         // private bool letztenansage = false;
         public static bool alarmaktiv = false;
+
         public static int spezialalarm = 0;
 
         public static double UhrEnde = 0;
@@ -38,12 +31,13 @@ namespace WindowsFormsApplication2
         public static String[] Ansagetexte = { "15sec", "30sec", " 1min", " 2min", " 3min", " 5min", "10min", "15min", "20min", "30min", "45min", "60min" };
         public static int[] AnsageSekunde = { 15, 30, 60, 120, 180, 300, 600, 900, 1200, 1800, 2700, 3600 };
 
-        Label[] label24 = new Label[12];
-        Label label7 = null;
-        Label label8 = null;
-        Label label9 = null;
+        private Label[] label24 = new Label[12];
+        private Label label7 = null;
+        private Label label8 = null;
+        private Label label9 = null;
         public static Label label10 = null;
-        Label label21 = null;
+        private Label label21 = null;
+
         override public void Init()
         {
             if (Sounds.Alarm == null)
@@ -265,7 +259,6 @@ namespace WindowsFormsApplication2
 
             if (CheckPoint(mausklick, label10))
             {
-
                 if (!uhraktiv)
                 {
                     UhrEnde = IStunden * 3600 + IMinuten * 60 + ISekunden + (new TimeSpan(DateTime.Now.Ticks)).TotalSeconds;
@@ -428,7 +421,6 @@ namespace WindowsFormsApplication2
                                                 else
                                                     uhraktiv = false;
                                             }
-
                                     }
                                     else
                                         Result.Add(KeyCodes[i]);

@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Collections.Generic;
 
 namespace WindowsFormsApplication2
 {
@@ -13,6 +13,7 @@ namespace WindowsFormsApplication2
         }
 
         public static Label label12 = null;
+
         override public void Init()
         {
             if (label12 == null)
@@ -85,30 +86,29 @@ namespace WindowsFormsApplication2
 
         public override POINT Mouse(POINT mausklick, Fenster Hauptfenster)
         {
-             Rectangle D = new Rectangle(Width - label12.Width / 2, label12.Top, label12.Width / 2, label12.Height);
-             Rectangle C = new Rectangle(Width - label12.Width, label12.Top, label12.Width/2, label12.Height);
-             if (Fenster.CheckPoint(mausklick, C))
-             {
-                 int CalcVol = PC_VolumeControl.VolumeControl.GetVolume();
-                 int max = ushort.MaxValue;
-                 int steps = max / 15;
-                 if (CalcVol < max) CalcVol += steps;
-                 if (CalcVol > max) CalcVol = max;
-                 PC_VolumeControl.VolumeControl.SetVolume(CalcVol);
-
-             }
-             else
-                 if (Fenster.CheckPoint(mausklick, D))
-                 {
-                     int CalcVol = PC_VolumeControl.VolumeControl.GetVolume();
-                     int max = ushort.MaxValue;
-                     int steps = max / 15;
-                     if (CalcVol > 0) CalcVol -= steps;
-                     if (CalcVol < 0) CalcVol = 0;
-                     PC_VolumeControl.VolumeControl.SetVolume(CalcVol);
-                 }
-                 else
-                     return mausklick;
+            Rectangle D = new Rectangle(Width - label12.Width / 2, label12.Top, label12.Width / 2, label12.Height);
+            Rectangle C = new Rectangle(Width - label12.Width, label12.Top, label12.Width / 2, label12.Height);
+            if (Fenster.CheckPoint(mausklick, C))
+            {
+                int CalcVol = PC_VolumeControl.VolumeControl.GetVolume();
+                int max = ushort.MaxValue;
+                int steps = max / 15;
+                if (CalcVol < max) CalcVol += steps;
+                if (CalcVol > max) CalcVol = max;
+                PC_VolumeControl.VolumeControl.SetVolume(CalcVol);
+            }
+            else
+                if (Fenster.CheckPoint(mausklick, D))
+                {
+                    int CalcVol = PC_VolumeControl.VolumeControl.GetVolume();
+                    int max = ushort.MaxValue;
+                    int steps = max / 15;
+                    if (CalcVol > 0) CalcVol -= steps;
+                    if (CalcVol < 0) CalcVol = 0;
+                    PC_VolumeControl.VolumeControl.SetVolume(CalcVol);
+                }
+                else
+                    return mausklick;
 
             return null;
         }
@@ -142,7 +142,5 @@ namespace WindowsFormsApplication2
             }
             return Result;
         }
-
-
     }
 }

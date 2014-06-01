@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
 {
-    class StopuhrAnzeige : Fenster
+    internal class StopuhrAnzeige : Fenster
     {
         public static Label label5 = null;
+
         override public void Init()
         {
             if (label5 == null)
@@ -44,6 +35,7 @@ namespace WindowsFormsApplication2
 
         private Label AbstandsLabel = null;
         private int RichtungsFaktor = 0;
+
         public StopuhrAnzeige(int _RichtungsFaktor, Label _AbstandsLabel)
         {
             Init();
@@ -81,7 +73,7 @@ namespace WindowsFormsApplication2
                 {
                     if (RichtungsFaktor == 1)
                     {
-                         label5.Top = AbstandsLabel.Top + AbstandsLabel.Height;
+                        label5.Top = AbstandsLabel.Top + AbstandsLabel.Height;
                     }
                     else
                         if (RichtungsFaktor == -1)

@@ -1,15 +1,6 @@
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using TL.AutoIE;
-using WMPLib;
-
 namespace WindowsFormsApplication2
 {
-
-    enum OCR_SYSTEM_CURSORS : uint
+    internal enum OCR_SYSTEM_CURSORS : uint
     {
         /// <summary>
         /// Standard arrow and small hourglass
@@ -82,7 +73,7 @@ namespace WindowsFormsApplication2
         OCR_WAIT = 32514
     }
 
-    enum IDC_STANDARD_CURSORS : int
+    internal enum IDC_STANDARD_CURSORS : int
     {
         IDC_ARROW = 32512,
         IDC_IBEAM = 32513,
@@ -100,6 +91,4 @@ namespace WindowsFormsApplication2
         IDC_APPSTARTING = 32650,
         IDC_HELP = 32651
     }
-
-
 }
