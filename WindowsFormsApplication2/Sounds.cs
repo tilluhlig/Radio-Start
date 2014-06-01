@@ -22,15 +22,9 @@ namespace WindowsFormsApplication2
     public class Soundsystem
     {
         private static FMOD.System system = null;
-
-        // private static FMOD.Sound sound1 = null, sound2 = null, sound3 = null;
-        //   private static FMOD.Channel channel = null;
         private static uint ms = 0;
 
         private static uint lenms = 0;
-
-        //private static bool playing = false;
-        //private static bool paused = false;
         private static int channelsplaying = 0;
 
         private bool first = true;
@@ -45,11 +39,6 @@ namespace WindowsFormsApplication2
             }
 
             system.init(32, FMOD.INITFLAGS.NORMAL, (IntPtr)null);
-
-            //system.createSound("Content\\Sounds\\battle1_ambient.ogg", FMOD.MODE.HARDWARE, ref sound1);
-            //  system.playSound(FMOD.CHANNELINDEX.FREE, sound1, false, ref channel);
-            // Sounds.channel.setVolume(4.0f);
-            //Sounds.channel.setFrequency(15025);
         }
 
         private FMOD.Sound Sound = null;
